@@ -1,0 +1,43 @@
+name: movie_search
+description: Movie search application with OMDB API
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  get: ^4.6.5 # GetX for state management & tools
+  flutter_dotenv: ^5.0.2 # DotEnv for private info
+  flutter_spinkit: ^5.1.0 # Loading Indicator
+  http: ^0.13.4 # API Call
+  extended_image: ^6.2.1 # Image Loader
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - .env
+
+  fonts:
+    - family: Archivo
+      fonts:
+        - asset: assets/fonts/Archivo-Medium.ttf
+          weight: 400
+    - family: Questrial
+      fonts:
+        - asset: assets/fonts/Questrial-Regular.ttf
+          weight: 500
