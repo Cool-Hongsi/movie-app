@@ -101,7 +101,7 @@ Widget MovieCardWidget(MovieModel movie) {
                       margin: const EdgeInsets.only(top: 20),
                       padding: EdgeInsets.symmetric(horizontal: Get.width * .03, vertical: Get.height * .016),
                       decoration: BoxDecoration(
-                        color: backgroundColorBlack,
+                        color: featureColor,
                         borderRadius: const BorderRadius.all(Radius.circular(5))
                       ),
                       width: double.infinity,

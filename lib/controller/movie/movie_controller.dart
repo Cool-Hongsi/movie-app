@@ -14,7 +14,7 @@ class MovieController extends GetxController {
 
   Rx<bool> isLoading = false.obs;
   RxList<MovieModel> movieList = <MovieModel>[].obs;
-  Rx<String> initialMessage = "Let's search movies!".obs;
+  Rx<String> initialMessage = "Hello!, Welcome to movie search app! Please enter movie title in search bar.".obs;
 
   @override
   void onInit() async {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:movie_search/controller/movie/movie_controller.dart';
+import 'package:movie_search/view/home/search_page_shimmer.dart';
 import 'package:movie_search/view/widget/input_widget.dart';
 import 'package:movie_search/view/widget/movie_cart_widget.dart';
 
@@ -39,23 +40,39 @@ class _SearchPageState extends State<SearchPage> {
             SingleChildScrollView(
               child: Container(
                 width: Get.width * 1,
-                padding: const EdgeInsets.only(top: 110 + 20),
+                padding: const EdgeInsets.only(top: 100),
                 child: Obx(() => Column(
                   children: [
                     // Initial Message
                     if(_movieController.initialMessage.isNotEmpty)
-                    Text(
-                      _movieController.initialMessage.value,
-                      style: TextStyle(
-                        color: fontColorBlack,
-                        fontFamily: 'Questrial',
-                        fontSize: 20
-                      ),
+                    Column(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.symmetric(vertical: Get.height * .035),
+                          child: Image.asset(
+                            'assets/images/movie_app_logo.png',
+                            scale: 2.5,
+                          ),
+                        ),
+                        Text(
+                          _movieController.initialMessage.value,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: fontColorBlack,
+                            fontFamily: 'Archivo',
+                            fontSize: 18
+                          ),
+                        ),
+                      ],
                     ),
                     
                     // Loading Indicator
+                    // if(_movieController.isLoading.value)
+                    // SpinKitFadingCircle(color: fontColorBlack, size: Get.width * .1),
+
+                    // Shimmer Indicator
                     if(_movieController.isLoading.value)
-                    SpinKitFadingCircle(color: fontColorBlack, size: Get.width * .1),
+                    const SearchPageShimmer(),
 
                     // Movie List
                     Column(
@@ -73,6 +90,8 @@ class _SearchPageState extends State<SearchPage> {
               right: 0,
               child: Container(
                 alignment: Alignment.center,
+                width: Get.width * 1,
+                height: 100,
                 decoration: BoxDecoration(
                   color: backgroundColorWhite,
                   border: Border(
@@ -82,12 +101,10 @@ class _SearchPageState extends State<SearchPage> {
                     ),
                   ),
                 ),
-                width: Get.width * 1,
-                height: 110,
                 child: InputWidget(
                   _movieController.inputSearchController,
                   "Search movies",
-                  "Please input search",
+                  "Please enter movie title in search bar",
                   onClickSearch
                 )
               ),

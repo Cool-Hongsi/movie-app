@@ -11,7 +11,7 @@ Widget InputWidget(TextEditingController inputController, String hintText,
     textAlignVertical: TextAlignVertical.center,
     cursorColor: fontColorBlack,
     style: TextStyle(
-      color: const Color(0xFF555555),
+      color: fontColorBlack,
       fontSize: Get.width * .045,
       fontFamily: 'Archivo',
       fontWeight: FontWeight.w400
@@ -20,41 +20,43 @@ Widget InputWidget(TextEditingController inputController, String hintText,
     textCapitalization: TextCapitalization.none,
     enableSuggestions: false,
     decoration: InputDecoration(
+      fillColor: backgroundColorGrey,
+      filled: true,
       hintText: hintText,
       enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: borderColorBlack, width: 1),
-          borderRadius: const BorderRadius.all(Radius.circular(5))
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: borderColorBlack, width: 1),
-          borderRadius: const BorderRadius.all(Radius.circular(5))
-        ),
-        isDense: true,
-        hintStyle: TextStyle(
-          fontSize: Get.width * .045,
-          color: borderColorDarkGrey,
-          fontFamily: 'Archivo',
-          fontWeight: FontWeight.w400
-        ),
-        suffixIcon: GestureDetector(
-          onTap: () {
-            if (inputController.text.isNotEmpty) {
-              onClickInputButton(inputController.text);
-            } else {
-              SnackbarWidget(warningMessage);
-            }
-          },
-          child: Align(
-            widthFactor: 1,
-            heightFactor: 1,
-            child: Icon(
-              Icons.search,
-              color: fontColorBlack,
-              size: 21,
-            )
-          ),
-        ),
-        contentPadding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25)
+        borderSide: BorderSide(color: backgroundColorGrey, width: 1),
+        borderRadius: const BorderRadius.all(Radius.circular(5))
       ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: backgroundColorGrey, width: 1),
+        borderRadius: const BorderRadius.all(Radius.circular(5))
+      ),
+      isDense: true,
+      hintStyle: TextStyle(
+        fontSize: Get.width * .045,
+        color: borderColorDarkGrey,
+        fontFamily: 'Archivo',
+        fontWeight: FontWeight.w400
+      ),
+      suffixIcon: GestureDetector(
+        onTap: () {
+          if (inputController.text.isNotEmpty) {
+            onClickInputButton(inputController.text);
+          } else {
+            SnackbarWidget(warningMessage);
+          }
+        },
+        child: Align(
+          widthFactor: 1,
+          heightFactor: 1,
+          child: Icon(
+            Icons.search,
+            color: fontColorBlack,
+            size: 21,
+          )
+        ),
+      ),
+      contentPadding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25)
+    ),
   );
 }
